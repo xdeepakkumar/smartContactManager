@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>about page</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+				<h1 class="text-center">Your Phonebook</h1>
+				
+				<!-- search box functionality -->
+				
+				<div class="search-container my-3">
+					<input onkeyup="search()" type="text" name="" class="form-control" id="search-input" placeholder="Search your contact" />
+					
+					<div class="search-result">
+						<h4>This is search result</h4>
+					</div>
+				</div>
+				
+				
+				<!-- search box functionality end-->
+				<div class="table-responsive">
+				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">#ID</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Phone</th>
+				      <th scope="col" class="text-center">Action</th>
+				      
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="c : ${contacts}">
+				      <th scope="row" th:text="'SPM2021' + ${c.cId}">1</th>
+				      <td><img class="my_phonebook_picture" th:src="@{'/img/'+${c.image}}" alt="profile photo" /> <span th:text="${c.name}"></span></td>
+				      <td><a th:href="@{'/user/contact/'+${c.cId}}"><span th:text="${c.email}"></span></a></td>
+				      <td th:text="${c.phone}"></td>
+				      <td>
+				      	<div class="container text-center">
+					      <div class="row">
+					        <div class="col-md-4">
+					          <a href="#" th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger btn-sm">Delete</a>
+					        </div>
+					         <div class="col-md-4">
+					          <a th:href="@{'/user/contact/'+${c.cId}}" class="btn btn-success btn-sm"><span>View</span></a>
+					        </div>
+					        <div class="col-md-4">
+					          <!-- post request sending -->
+					          <form th:action="@{'/user/update-phonebook/'+${c.cId}}" method="post">
+					            <button type="submit" class="btn btn-warning btn-sm">Update</button>
+					          </form>
+					        </div>
+					      </div>
+					    </div>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+				</div>
+				<!-- pagenation start -->
+				<nav aria-label = "page navigation">
+					<lu class="pagination">
+						<li th:if="${currentPage != 0}" class="page-item"><a th:href="@{'/user/show-phonebook/'+${currentPage-1}}" class="page-link">Previous</a></li>
+						
+						<li th:classappend="${currentPage == i-1 ? 'active':''}" th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a th:href="@{'/user/show-phonebook/'+${i-1}}" href="" class="page-link"><span th:text="${i}"></span></a></li>
+						
+						<li th:if="${currentPage+1 != totalPages}" class="page-item"><a th:href="@{'/user/show-phonebook/'+${currentPage+1}}" class="page-link">Next</a></li>
+					</lu>
+				</nav>
+				<!-- pagenation end here -->
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.item').removeClass('active');
+				$('#Phonebook-link').addClass('active');
+			});
+		</script>
+	</section>
+</body>
+</html>

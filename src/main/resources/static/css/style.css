@@ -1,0 +1,111 @@
+
+body{
+	background:e3e3e3;
+}
+
+/* banner section style */
+.banner-custom{
+	width:100%;
+}
+.banner-custom img{
+	-webkit-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	height: 91vh;
+	color:white;
+}
+
+
+/* login page css */
+#login .container #login-row #login-column #login-box {
+  margin-top: 10px;
+  max-width: 600px;
+  height:420px;
+  border: 1px solid #9C9C9C;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+
+/* sidebar & content design*/
+@media only screen and (max-width: 600px){
+	.sidebar{
+		display:none;
+		width:80% !important;
+		background:gray;
+		padding-top:20px;
+		height:100%;
+		position: fixed;	
+	}
+	.content{
+		margin-left:0% !important;
+	}
+}
+
+.sidebar{
+	width:18%;
+	background:gray;
+	padding-top:45px;
+	height:100%;
+	position: fixed;	
+	z-index:999999999;
+}
+.sidebar a{
+	display:block;
+	width:100%;
+	padding:10px 15px;
+	color:white;
+	text-decoration: none;
+}
+.sidebar a:hover{
+	background:orange;
+	color:white;
+}
+.sidebar .divider{
+	height:.5px;
+	width:100%;
+	background:white;
+	margin-top:10px;
+}
+
+.sidebar .crossBtn{
+	position: absolute;
+	top: 0;
+	font-size: 30px;
+	right:36px;
+	cursor: pointer;
+	color:white; 
+}
+.content{
+	margin-left:20%;
+}
+.active{
+	background: white;
+	color:gray !important;
+}
+/*phonebook picture*/
+.my_phonebook_picture{
+	width:30px;
+	height:30px;
+	object-fit:cover;
+	border-radius:50%;
+}
+
+/* search function style*/
+.search-container{
+	position: relative;
+}
+.search-result{
+	position: absolute;
+	background: #e2e2e2;
+	width:100%;
+	padding:10px;
+	border: 1px solid black; 
+	display:none;
+}
+
+

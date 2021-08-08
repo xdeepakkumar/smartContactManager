@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>about page</title>
+</head>
+<body>
+	<section>
+		<div class="card ml-3 mr-3">
+			<div class="card-body"  th:if="${contact}">
+				<div class="conatiner text-center">
+					<h1>Showing Phonebook details</h1>
+					<img style="height:200px; width:200px;" class="my_phonebook_picture" th:src="@{'/img/'+${contact.image}}" alt="profile photo" />
+					<h3> <span th:text="${contact.name}"></span> (<span th:text="${contact.secondName}"></span>)</h3>
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">#ID</th>
+					      <th scope="col">SPM2021<span th:text="${contact.cId}"></span></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>Email</td>
+					      <td><span th:text="${contact.email}"></span></td>
+					    </tr>
+						 <tr>
+					      <td>Phone</td>
+					      <td><span th:text="${contact.phone}"></span></td>
+					    </tr>
+					     <tr>
+					      <td>Work</td>
+					      <td><span th:text="${contact.work}"></span></td>
+					    </tr>
+					  </tbody>
+					</table>
+					<!-- showing the descruption -->
+					<div class="description mt-3 card card-body">
+						<h5 class="text-center">Phonebook Description</h5>
+						<hr />
+						<th:block th:utext="${contact.description}"></th:block>
+					</div>
+					<div class="container mt-2">
+						<a th:onclick="|deleteContact(${contact.cId})|" class="btn btn-danger btn-sm">Delete</a>
+				      		<!-- post request sending -->
+				      	<form th:action="@{'/user/update-phonebook/'+${contact.cId}}" method="post">
+				      		<button type="submit" class="btn btn-warning btn-sm">Update</button>
+				      	</form>
+					</div>
+				</div>				
+			</div>
+			<!--  for unauthorized access -->
+			<h4 class="text-center text-danger" th:unless="${contact}">You don't have permission to access this data !!</h4>
+		</div>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				$('.item').removeClass('active');
+				$('#phonebook-link').addClass('active');
+			});
+		</script>
+	</section>
+</body>
+</html>

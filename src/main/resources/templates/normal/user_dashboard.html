@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>about page</title>
+</head>
+<body>
+	<section>
+		<div class="container text-center">
+			<div class="card">
+				<div class="card-body">
+					<div class="container text-center mb-2">
+						<img style="height:400px; width:500px;" class="my_phonebook_picture" th:src="@{/img/dashboard-img.jpg}" alt="profile photo" />
+					</div>
+					<h3 class="text-center mb-2 font-italic">Start adding your phonebook on Cloud</h3>
+					<a th:href="@{/user/add-phonebook}" class="btn btn-primary mt-3">Add Phonebook</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.item').removeClass('active');
+				$('#home-link').addClass('active');
+			});
+		</script>
+	</section>
+</body>
+</html>

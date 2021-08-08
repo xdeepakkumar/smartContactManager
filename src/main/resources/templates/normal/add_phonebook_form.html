@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>about page</title>
+</head>
+<body>
+	<section>
+		<div class="card  mr-4 mb-4">
+			<div class="card-body">
+				<h1 class="text-center">Add Phonebook</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="" th:object="${contact}" method="post" th:action="@{/user/process-contact}" class="mt-2"  enctype="multipart/form-data">
+								 <div class="form-group">
+								    <label for=firstName>First Name <span class="text-danger">*</span></label>
+								    <input type="text" name="name" class="form-control" id="firstName" placeholder="enter first name" required>
+								  </div>
+								  <div class="form-group">
+								    <label for=secondName>Last Name <span class="text-danger">*</span></label>
+								    <input type="text" name="secondName" class="form-control" id="secondName" placeholder="enter Last name" required>
+								  </div>
+								   <div class="form-group">
+								    <label for=work>Work <span class="text-danger">*</span></label>
+								    <input type="text" name="work" class="form-control" id="work" placeholder="enter occupation" required>
+								  </div>
+								   <div class="form-group">
+									    <label for="exampleInputEmail1">Email<span class="text-danger">*</span></label>
+									    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email address" required>
+									</div>
+									   <div class="form-group">
+									    <label for="phone">Phone <span class="text-danger">*</span> </label>
+									    <input type="number" name="phone" class="form-control" id="phone" aria-describedby="phone" placeholder="phone number" required>
+									</div>
+									<div class="form-group">
+									    <label for="exampleFormControlTextarea1">Full Description <span class="text-danger">*</span></label>
+									    <textarea class="form-control" name="description" id="mytextarea" rows="9"></textarea>
+									 </div>
+									 <div class="form-group">
+									    <label for="image">Image <span class="text-danger">*</span> </label>
+									    <input type="file" name="profileImage" class="form-control" id="image">
+									  </div>
+									  <button type="submit" class="btn btn-success btn-sm">Add Phonebook</button>
+  									  <button type="reset" class="btn btn-warning btn-sm">Reset</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			})
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".item").removeClass("active");
+				$("#addPhonebook-link").addClass("active");
+			});
+		</script>
+	</section>
+</body>
+</html>
